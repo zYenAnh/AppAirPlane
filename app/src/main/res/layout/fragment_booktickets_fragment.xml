@@ -159,24 +159,43 @@
                         android:layout_marginLeft="30dp"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:id="@+id/diemden"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="0"
-                            android:src="@drawable/home_hacanh_ic" />
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/layout_end_location"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0">
 
-                        <TextView
-                            android:id="@+id/end_location_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="20dp"
-                            android:layout_weight="0"
-                            android:text="Hà Nội (HAN)"
-                            android:textColor="@color/primary_color"
-                            android:textSize="15dp" />
+                            <TextView
+                                android:id="@+id/end_location_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="20dp"
+                                android:layout_weight="0"
+                                android:text="Hà Nội (HAN)"
+                                android:textColor="@color/primary_color"
+                                android:textSize="15dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toEndOf="@+id/diemden"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/diemden"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="175dp"
+                                android:layout_weight="0"
+                                android:src="@drawable/home_hacanh_ic"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </android.support.constraint.ConstraintLayout>
+
                     </LinearLayout>
                 </LinearLayout>
 

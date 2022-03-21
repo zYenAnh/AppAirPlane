@@ -33,6 +33,7 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
     private String str_start;
     private String str_end;
     private ConstraintLayout layout_start_location;
+    private ConstraintLayout layout_end_location;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         start_location = (TextView)view.findViewById(R.id.start_location_text);
         end_location = (TextView)view.findViewById(R.id.end_location_text);
         layout_start_location = (ConstraintLayout)view.findViewById(R.id.layout_start_location);
+        layout_end_location = (ConstraintLayout)view.findViewById(R.id.layout_end_location);
 
         // callFunction
         getChildFragmentManager().beginTransaction().replace(R.id.home_framelayout, new home_child_fragment1()).commit();
@@ -59,6 +61,8 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         callFragment2.setOnClickListener(this);
         swap_location.setOnClickListener(this);
         layout_start_location.setOnClickListener(this);
+        layout_end_location.setOnClickListener(this);
+
     }
 
     @Override
@@ -87,7 +91,11 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
             getChildFragmentManager().beginTransaction().replace(R.id.home_framelayout, new home_child_fragment2()).commit();
         }
         if(view.getId()==R.id.layout_start_location) {
-            Intent i = new Intent(getActivity().getApplication(),choose_airport.class);
+            Intent i = new Intent(getActivity(),choose_airport.class);
+            startActivity(i);
+        }
+        if(view.getId()==R.id.layout_end_location) {
+            Intent i = new Intent(getActivity(),choose_airport.class);
             startActivity(i);
         }
     }
