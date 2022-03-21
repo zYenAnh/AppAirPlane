@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_book_tickets" android:title="Book Tickets" android:icon="@drawable/home_ic_plane"/>
+    <item android:id="@+id/menu_manager_tickets" android:title="Manager Tickets" android:icon="@drawable/home_listtickets"/>
+</menu>
