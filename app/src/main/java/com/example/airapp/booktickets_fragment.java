@@ -19,14 +19,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class booktickets_fragment extends Fragment implements View.OnClickListener {
 
-    private Button callFragment1;
-    private Button callFragment2;
+    private Button btnSearchByDate;
+    private Button btnSearchByMonth;
     private ImageView swap_location;
     private TextView start_location;
     private TextView end_location;
@@ -34,6 +36,11 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
     private String str_end;
     private ConstraintLayout layout_start_location;
     private ConstraintLayout layout_end_location;
+    private ConstraintLayout constraint_RoundTrip;
+    private Switch switchRoundTrip;
+    private LinearLayout linearDate_Roundtrip;
+    private LinearLayout linearSelectCustomer;
+    private LinearLayout linearByMonth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -47,22 +54,28 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         super.onViewCreated(view,savedInstanceState);
 
         // set Values
-        callFragment1 = (Button)view.findViewById(R.id.btn_bydate) ;
-        callFragment2 = (Button)view.findViewById(R.id.btn_bymonth);
+        btnSearchByDate = (Button)view.findViewById(R.id.btn_bydate) ;
+        btnSearchByMonth = (Button)view.findViewById(R.id.btn_bymonth);
         swap_location = (ImageView)view.findViewById(R.id.swap_location);
         start_location = (TextView)view.findViewById(R.id.start_location_text);
         end_location = (TextView)view.findViewById(R.id.end_location_text);
         layout_start_location = (ConstraintLayout)view.findViewById(R.id.layout_start_location);
         layout_end_location = (ConstraintLayout)view.findViewById(R.id.layout_end_location);
+        switchRoundTrip = (Switch)view.findViewById(R.id.switchRoundTrip);
+        constraint_RoundTrip = (ConstraintLayout) view.findViewById(R.id.constraint_RoundTrip);
+        linearDate_Roundtrip = (LinearLayout)view.findViewById(R.id.linearDate_Roundtrip);
+        linearSelectCustomer = (LinearLayout)view.findViewById(R.id.linearSelectCustomer);
+        linearByMonth = (LinearLayout)view.findViewById(R.id.linearByMonth);
 
         // callFunction
-        getChildFragmentManager().beginTransaction().replace(R.id.home_framelayout, new home_child_fragment1()).commit();
-        callFragment1.setOnClickListener(this);
-        callFragment2.setOnClickListener(this);
+        constraint_RoundTrip.setVisibility(View.GONE);
+        linearByMonth.setVisibility(View.GONE);
+        btnSearchByDate.setOnClickListener(this);
+        btnSearchByMonth.setOnClickListener(this);
         swap_location.setOnClickListener(this);
         layout_start_location.setOnClickListener(this);
         layout_end_location.setOnClickListener(this);
-
+        switchRoundTrip.setOnClickListener(this);
     }
 
     @Override
@@ -77,18 +90,22 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
             end_location.setText(str_end);
         }
         if(view.getId()==R.id.btn_bydate) {
-            callFragment1.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.background_edittext));
-            callFragment1.setTextColor(Color.parseColor("#101340"));
-            callFragment2.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.border_btn));
-            callFragment2.setTextColor(Color.parseColor("#ffffff"));
-            getChildFragmentManager().beginTransaction().replace(R.id.home_framelayout, new home_child_fragment1()).commit();
+            btnSearchByDate.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.background_edittext));
+            btnSearchByDate.setTextColor(Color.parseColor("#101340"));
+            btnSearchByMonth.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.border_btn));
+            btnSearchByMonth.setTextColor(Color.parseColor("#ffffff"));
+            linearDate_Roundtrip.setVisibility(View.VISIBLE);
+            linearSelectCustomer.setVisibility(View.VISIBLE);
+            linearByMonth.setVisibility(View.GONE);
         }
         if(view.getId()==R.id.btn_bymonth) {
-            callFragment2.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.background_edittext));
-            callFragment2.setTextColor(Color.parseColor("#101340"));
-            callFragment1.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.border_btn));
-            callFragment1.setTextColor(Color.parseColor("#ffffff"));
-            getChildFragmentManager().beginTransaction().replace(R.id.home_framelayout, new home_child_fragment2()).commit();
+            btnSearchByMonth.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.background_edittext));
+            btnSearchByMonth.setTextColor(Color.parseColor("#101340"));
+            btnSearchByDate.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.border_btn));
+            btnSearchByDate.setTextColor(Color.parseColor("#ffffff"));
+            linearByMonth.setVisibility(View.VISIBLE);
+            linearDate_Roundtrip.setVisibility(View.GONE);
+            linearSelectCustomer.setVisibility(View.GONE);
         }
         if(view.getId()==R.id.layout_start_location) {
             Intent i = new Intent(getActivity(),choose_airport.class);
@@ -97,6 +114,13 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         if(view.getId()==R.id.layout_end_location) {
             Intent i = new Intent(getActivity(),choose_airport.class);
             startActivity(i);
+        }
+        if(view.getId()==R.id.switchRoundTrip) {
+            boolean checkRoundTrip = switchRoundTrip.isChecked();
+            if(checkRoundTrip)
+                constraint_RoundTrip.setVisibility(View.VISIBLE);
+            else
+                constraint_RoundTrip.setVisibility(View.GONE);
         }
     }
 }
