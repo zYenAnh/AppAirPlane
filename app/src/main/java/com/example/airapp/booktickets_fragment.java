@@ -1,14 +1,18 @@
 package com.example.airapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.solver.state.State;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,10 +32,14 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
     private TextView end_location;
     private String str_start;
     private String str_end;
+    private ConstraintLayout layout_start_location;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.fragment_booktickets_fragment, container, false);
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -43,12 +51,14 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         swap_location = (ImageView)view.findViewById(R.id.swap_location);
         start_location = (TextView)view.findViewById(R.id.start_location_text);
         end_location = (TextView)view.findViewById(R.id.end_location_text);
+        layout_start_location = (ConstraintLayout)view.findViewById(R.id.layout_start_location);
 
         // callFunction
         getChildFragmentManager().beginTransaction().replace(R.id.home_framelayout, new home_child_fragment1()).commit();
         callFragment1.setOnClickListener(this);
         callFragment2.setOnClickListener(this);
         swap_location.setOnClickListener(this);
+        layout_start_location.setOnClickListener(this);
     }
 
     @Override
@@ -75,6 +85,10 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
             callFragment1.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.border_btn));
             callFragment1.setTextColor(Color.parseColor("#ffffff"));
             getChildFragmentManager().beginTransaction().replace(R.id.home_framelayout, new home_child_fragment2()).commit();
+        }
+        if(view.getId()==R.id.layout_start_location) {
+            Intent i = new Intent(getActivity().getApplication(),choose_airport.class);
+            startActivity(i);
         }
     }
 }

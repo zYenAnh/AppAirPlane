@@ -21,10 +21,10 @@ public class FormLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i= new Intent(FormLogin.this,home_airapp.class);
-                EditText userNameEditText = (EditText)findViewById(R.id.inputUserName);
-                EditText passWordEditText = (EditText)findViewById(R.id.inputPassword);
-                i.putExtra("userName",userNameEditText.getText().toString());
-                i.putExtra("password",passWordEditText.getText().toString());
+//                EditText userNameEditText = (EditText)findViewById(R.id.inputUserName);
+//                EditText passWordEditText = (EditText)findViewById(R.id.inputPassword);
+//                i.putExtra("userName",userNameEditText.getText().toString());
+//                i.putExtra("password",passWordEditText.getText().toString());
                 startActivity(i);
             }
         });
