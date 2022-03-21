@@ -34,8 +34,8 @@ public class managertickets_fragment extends Fragment {
         arrayListTickets = new ArrayList<>();
 
         listViewTickets = view.findViewById(R.id.ListViewTickets);
-        arrayListTickets.add(new FlightTicket(1,"30/2/2022","05:00",
-                    "07:10","HAN","SGN","Bay thẳng",1276000,
+        arrayListTickets.add(new FlightTicket(1,"30/2/2022","09:00",
+                    "11:10","HAN","SGN","Bay thẳng",1276000,
                     "VietNamAirlines","Phổ thông giá rẻ",R.drawable.vietnamairliness_ic,true,R.drawable.tick_ic));
         arrayListTickets.add(new FlightTicket(1,"17/06/2021","05:00",
                     "07:10","HAN","SGN","Bay thẳng",1276000,
@@ -46,6 +46,9 @@ public class managertickets_fragment extends Fragment {
         arrayListTickets.add(new FlightTicket(1,"17/06/2021","05:00",
                 "07:10","HAN","SGN","Bay thẳng",1276000,
                 "VietNamAirlines","Phổ thông giá rẻ",R.drawable.vietnamairliness_ic,true,R.drawable.tick_ic));
+        arrayListTickets.add(new FlightTicket(1,"22/02/2022","05:00",
+                "07:10","HAN","SGN","Bay thẳng",1276000,
+                "VietNamAirlines","Thương gia",R.drawable.vietnamairliness_ic,true,R.drawable.tick_ic));
 
         adapterTickets = new AdapterTickets(getContext(),R.layout.layout_tickets,arrayListTickets);
         listViewTickets.setAdapter(adapterTickets);
