@@ -45,7 +45,8 @@ public class AdapterListAirport extends BaseAdapter {
 
         view = inflater.inflate(layout,null);
 
-        AirPort itemAirport = arrayListAirport.get(i);
+        AirPort itemAirport;
+        itemAirport = arrayListAirport.get(i);
 
         TextView textViewAbbreviations = view.findViewById(R.id.abbreviations);
         TextView textViewNameProvinceOrCity = view.findViewById(R.id.nameProvinceOrCity);
