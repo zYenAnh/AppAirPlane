@@ -6,15 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class choose_airport extends AppCompatActivity {
+public class  choose_airport extends AppCompatActivity {
 
     private ListView listViewAirport;
     private ArrayList<AirPort> arrayListAirport;
     private AdapterListAirport adapterAirport;
+    private ImageView backImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,7 @@ public class choose_airport extends AppCompatActivity {
         arrayListAirport = new ArrayList<>();
 
         listViewAirport = findViewById(R.id.listViewAirport);
+        backImage = findViewById(R.id.backImage);
 
         arrayListAirport.add(new AirPort(1,"HAN","Hà Nội","Sân bay quốc tế Nội Bài"));
         arrayListAirport.add(new AirPort(2,"BMV","Buôn Mê Thuột","Sân bay quốc nội Buôn Mê Thuột"));
@@ -45,6 +48,12 @@ public class choose_airport extends AppCompatActivity {
                         saveDataToIntent(data,i);
                         finish();
                 }
+        });
+        backImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
         });
     }
 

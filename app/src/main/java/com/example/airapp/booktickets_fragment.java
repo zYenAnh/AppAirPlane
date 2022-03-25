@@ -79,6 +79,8 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         layout_start_location.setOnClickListener(this);
         layout_end_location.setOnClickListener(this);
         switchRoundTrip.setOnClickListener(this);
+
+        
     }
 
     @Override
@@ -117,7 +119,7 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         }
         if(view.getId()==R.id.layout_end_location) {
             Intent i = new Intent(getActivity(),choose_airport.class);
-            int REQUEST_CODE = 9;
+            int REQUEST_CODE = 10;
             startActivityForResult(i,REQUEST_CODE);
         }
         if(view.getId()==R.id.switchRoundTrip) {
@@ -126,6 +128,9 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
                 constraint_RoundTrip.setVisibility(View.VISIBLE);
             else
                 constraint_RoundTrip.setVisibility(View.GONE);
+        }
+        if(view.getId()==R.id.linearSelectCustomer) {
+
         }
     }
 
@@ -136,6 +141,12 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
             textStartLocation = data.getExtras().getString("ProvinceCity")
                     + " ("+ data.getExtras().getString("IDAirport") + ")";
             start_location.setText(textStartLocation);
+        }
+        if(resultCode==RESULT_OK && requestCode ==10) {
+            if(data.hasExtra("IDAirport"));
+            textStartLocation = data.getExtras().getString("ProvinceCity")
+                    + " ("+ data.getExtras().getString("IDAirport") + ")";
+            end_location.setText(textStartLocation);
         }
     }
 }
