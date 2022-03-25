@@ -1,5 +1,7 @@
 package com.example.airapp;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -41,6 +43,7 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
     private LinearLayout linearDate_Roundtrip;
     private LinearLayout linearSelectCustomer;
     private LinearLayout linearByMonth;
+    String textStartLocation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -109,11 +112,13 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         }
         if(view.getId()==R.id.layout_start_location) {
             Intent i = new Intent(getActivity(),choose_airport.class);
-            startActivity(i);
+            int REQUEST_CODE = 9;
+            startActivityForResult(i,REQUEST_CODE);
         }
         if(view.getId()==R.id.layout_end_location) {
             Intent i = new Intent(getActivity(),choose_airport.class);
-            startActivity(i);
+            int REQUEST_CODE = 9;
+            startActivityForResult(i,REQUEST_CODE);
         }
         if(view.getId()==R.id.switchRoundTrip) {
             boolean checkRoundTrip = switchRoundTrip.isChecked();
@@ -121,6 +126,16 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
                 constraint_RoundTrip.setVisibility(View.VISIBLE);
             else
                 constraint_RoundTrip.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode==RESULT_OK && requestCode ==9) {
+            if(data.hasExtra("IDAirport"));
+            textStartLocation = data.getExtras().getString("ProvinceCity")
+                    + " ("+ data.getExtras().getString("IDAirport") + ")";
+            start_location.setText(textStartLocation);
         }
     }
 }

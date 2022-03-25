@@ -34,7 +34,7 @@
         <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AirPlaneAndroid/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2975" />
         <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/drawable/background_border6dp.xml" value="0.31" />
         <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/drawable/background_edittext.xml" value="0.31" />
-        <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/layout/activity_choose_airport.xml" value="0.1945288753799392" />
+        <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/layout/activity_choose_airport.xml" value="0.264" />
         <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/layout/activity_form_login.xml" value="0.2" />
         <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/layout/activity_home_airapp.xml" value="0.2" />
         <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/layout/fragment_booktickets_fragment.xml" value="0.4" />
@@ -42,7 +42,7 @@
         <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/layout/fragment_home_searchbymonth.xml" value="0.4" />
         <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/layout/fragment_managertickets_fragment.xml" value="0.21829710144927536" />
         <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/layout/layout_airport.xml" value="0.2" />
-        <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/layout/layout_tickets.xml" value="0.264" />
+        <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/layout/layout_tickets.xml" value="0.2" />
         <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane/app/src/main/res/menu/menu_navigation.xml" value="0.29259259259259257" />
         <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane_Android/app/src/main/res/layout/activity_form_login.xml" value="0.18885869565217392" />
         <entry key="..\:/Users/Administrator/Desktop/UIT/Java/AppAirPlane_Android/app/src/main/res/layout/fragment_booktickets_fragment.xml" value="0.25" />

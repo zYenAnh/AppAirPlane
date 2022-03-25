@@ -30,7 +30,7 @@
 
                 <ImageView
                     android:id="@+id/imageView11"
-                    android:layout_width="40dp"
+                    android:layout_width="25dp"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
@@ -85,6 +85,7 @@
         <ListView
             android:id="@+id/listViewAirport"
             android:layout_width="match_parent"
+            android:dividerHeight="1dp"
             android:layout_height="match_parent" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
