@@ -103,7 +103,7 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
             @Override
             public void onClick(View view) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        getContext(), android.R.style.Theme_Holo_Light_Dialog,onDateSetLister,day,month,year,dateOfWeek);
+                        getContext(), android.R.style.Theme_Holo_Light_Dialog,onDateSetLister,day,month,year);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
             }
@@ -111,7 +111,7 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
 
         onDateSetLister = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day,int dateOfWeek) {
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month += 1;
                 String dateFinal = day + "/" + month + "/" + year;
                 dateStartChange.setText(dateFinal);
