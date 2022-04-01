@@ -2,9 +2,12 @@ package com.example.airapp;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,11 +23,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class booktickets_fragment extends Fragment implements View.OnClickListener {
@@ -43,11 +50,13 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
     private LinearLayout linearDate_Roundtrip;
     private LinearLayout linearSelectCustomer;
     private LinearLayout linearByMonth;
+    private DatePickerDialog datePickerDialog;
+    private TextView dateStartChange;
     String textStartLocation;
+    DatePickerDialog.OnDateSetListener onDateSetLister;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_booktickets_fragment, container, false);
     }
 
@@ -55,6 +64,8 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view,savedInstanceState);
+
+
 
         // set Values
         btnSearchByDate = (Button)view.findViewById(R.id.btn_bydate) ;
@@ -69,6 +80,8 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         linearDate_Roundtrip = (LinearLayout)view.findViewById(R.id.linearDate_Roundtrip);
         linearSelectCustomer = (LinearLayout)view.findViewById(R.id.linearSelectCustomer);
         linearByMonth = (LinearLayout)view.findViewById(R.id.linearByMonth);
+        dateStartChange = (TextView)view.findViewById(R.id.DateStarted);
+
 
         // callFunction
         constraint_RoundTrip.setVisibility(View.GONE);
@@ -80,7 +93,30 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         layout_end_location.setOnClickListener(this);
         switchRoundTrip.setOnClickListener(this);
 
-        
+        final Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int dateOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+
+        dateStartChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        getContext(), android.R.style.Theme_Holo_Light_Dialog,onDateSetLister,day,month,year,dateOfWeek);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        onDateSetLister = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day,int dateOfWeek) {
+                month += 1;
+                String dateFinal = day + "/" + month + "/" + year;
+                dateStartChange.setText(dateFinal);
+            }
+        };
     }
 
     @Override
@@ -129,10 +165,37 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
             else
                 constraint_RoundTrip.setVisibility(View.GONE);
         }
-        if(view.getId()==R.id.linearSelectCustomer) {
-
-        }
     }
+
+//    private String getMonthFormat(int month) {
+//        switch (month) {
+//            case 1:
+//                return "JAN";
+//            case 2:
+//                return "FEB";
+//            case 3:
+//                return "MAR";
+//            case 4:
+//                return "APR";
+//            case 5:
+//                return "MAY";
+//            case 6:
+//                return "JUN";
+//            case 7:
+//                return "JUL";
+//            case 8:
+//                return "AUG";
+//            case 9:
+//                return "SEP";
+//            case 10:
+//                return "OCT";
+//            case 11:
+//                return "NOV";
+//            case 12:
+//                return "DEC";
+//        }
+//        return "JAN";
+//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
