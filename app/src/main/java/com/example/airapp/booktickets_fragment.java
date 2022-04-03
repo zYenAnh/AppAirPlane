@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.solver.state.State;
 import android.support.v4.app.Fragment;
@@ -60,12 +61,9 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         return inflater.inflate(R.layout.fragment_booktickets_fragment, container, false);
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view,savedInstanceState);
-
-
 
         // set Values
         btnSearchByDate = (Button)view.findViewById(R.id.btn_bydate) ;
@@ -82,7 +80,6 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         linearByMonth = (LinearLayout)view.findViewById(R.id.linearByMonth);
         dateStartChange = (TextView)view.findViewById(R.id.DateStarted);
 
-
         // callFunction
         constraint_RoundTrip.setVisibility(View.GONE);
         linearByMonth.setVisibility(View.GONE);
@@ -92,6 +89,7 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
         layout_start_location.setOnClickListener(this);
         layout_end_location.setOnClickListener(this);
         switchRoundTrip.setOnClickListener(this);
+
 
         final Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
@@ -113,11 +111,30 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month += 1;
-                String dateFinal = day + "/" + month + "/" + year;
+                String dateFinal = "Thứ "+dateOfWeek + ", " + (day<10?"0"+day:""+day) + " tháng " + (month<10?"0"+month:""+month) + ", " + year;
                 dateStartChange.setText(dateFinal);
             }
         };
+        
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString("dateStart",(dateStartChange.getText()).toString());
+        savedInstanceState.putString("StartLocation",start_location.getText().toString());
+        savedInstanceState.putString("EndLocation",end_location.getText().toString());
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        start_location.setText(savedInstanceState.getString("StartLocation"));
+        end_location.setText(savedInstanceState.getString("EndLocation"));
+        dateStartChange.setText(savedInstanceState.getString("dateStart"));
+    }
+
+
 
     @Override
     public void onClick(View view) {
@@ -166,36 +183,6 @@ public class booktickets_fragment extends Fragment implements View.OnClickListen
                 constraint_RoundTrip.setVisibility(View.GONE);
         }
     }
-
-//    private String getMonthFormat(int month) {
-//        switch (month) {
-//            case 1:
-//                return "JAN";
-//            case 2:
-//                return "FEB";
-//            case 3:
-//                return "MAR";
-//            case 4:
-//                return "APR";
-//            case 5:
-//                return "MAY";
-//            case 6:
-//                return "JUN";
-//            case 7:
-//                return "JUL";
-//            case 8:
-//                return "AUG";
-//            case 9:
-//                return "SEP";
-//            case 10:
-//                return "OCT";
-//            case 11:
-//                return "NOV";
-//            case 12:
-//                return "DEC";
-//        }
-//        return "JAN";
-//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
