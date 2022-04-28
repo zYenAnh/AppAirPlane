@@ -17,7 +17,7 @@ public class activity_createAccount extends AppCompatActivity {
         renderTextPolicy(textViewPolicy);
         renderTextLoginNow(textLoginNow);
     }
-
+    // Check
     public void renderTextPolicy(CheckBox x) {
         String htmlsPolicy = "I have read and i do accept <a href=\"https://www.facebook.com/kimsohyun1706/\">privacy policy</a>";
         x.setText(Html.fromHtml(htmlsPolicy));
